@@ -49,7 +49,7 @@ tasks.withType<Jar>() {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     manifest {
-        attributes["Main-Class"] = "$group.ApplicationKt"
+        attributes["Main-Class"] = "pers.show.ApplicationKt"
     }
     configurations["compileClasspath"].forEach { file: File ->
         from(zipTree(file.absoluteFile))
