@@ -8,7 +8,7 @@ plugins {
 group = "pers.show"
 version = "0.0.1"
 val ktor_version = "3.0.3"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 //application {
 //    val isDevelopment: Boolean = project.ext.has("development")
