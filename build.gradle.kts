@@ -10,16 +10,16 @@ version = "0.0.1"
 val ktor_version = "3.0.3"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-//application {
-//    val isDevelopment: Boolean = project.ext.has("development")
-//    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
-//
+application {
+    val isDevelopment: Boolean = project.ext.has("development")
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+    mainClass.set("$group.ApplicationKt")
 //    if (isDevelopment) {
 //        mainClass.set("io.ktor.server.tomcat.jakarta.EngineMain")
 //    } else {
 //        mainClass.set("$group.ApplicationKt")
 //    }
-//}
+}
 
 repositories {
     mavenCentral()
