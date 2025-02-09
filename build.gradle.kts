@@ -13,6 +13,7 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 application {
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+
     mainClass.set("$group.ApplicationKt")
 //    if (isDevelopment) {
 //        mainClass.set("io.ktor.server.tomcat.jakarta.EngineMain")
@@ -42,4 +43,15 @@ dependencies {
     testImplementation(libs.kotlin.test.junit)
     implementation("io.ktor:ktor-client-core:$ktor_version")
     implementation("io.ktor:ktor-client-apache5:$ktor_version")
+}
+
+tasks.withType<Jar>() {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes["Main-Class"] = "$group.ApplicationKt"
+    }
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
 }
