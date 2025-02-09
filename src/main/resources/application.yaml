@@ -5,6 +5,7 @@ ktor:
     deployment:
         port: 8080
 postgres:
-  url: "jdbc:postgresql://127.0.0.1:5432/postgres"
-  user: postgres
-  password: root
+  url: ${DATABASE_URL}
+  port: ${PGPORT}
+  user: ${PGUSER}
+  password: ${PGPASSWORD}

@@ -10,17 +10,21 @@ version = "0.0.1"
 val ktor_version = "3.0.3"
 
 application {
-    mainClass.set("io.ktor.server.tomcat.jakarta.EngineMain")
-
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+
+    if (isDevelopment) {
+        mainClass.set("io.ktor.server.tomcat.jakarta.EngineMain")
+    } else {
+        mainClass.set("$group.ApplicationKt")
+    }
 }
+
+
 
 repositories {
     mavenCentral()
 }
-
-
 
 dependencies {
     implementation(libs.ktor.server.core)
@@ -38,4 +42,5 @@ dependencies {
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
     implementation("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-apache5:$ktor_version")
 }
